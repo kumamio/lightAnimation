@@ -1,0 +1,60 @@
+﻿:root{
+	--nums:.8;
+	--first-color: hsla(216,100%,29%,var(--nums));
+	--second-color: hsla(247,99%,53%,var(--nums));
+	--third-color: hsla(320,98%,66%,var(--nums));
+	--fourth-color: hsla(32,98%,98%,var(--nums));
+
+}
+
+body{
+	color:hsl(52,96%,86%);
+	position: relative;
+	/*font-size: 12px;*/
+	/*background-color:#000;*/
+	/*background:#000 linear-gradient(0, var(--first-color), var(--second-color) 20%, var(--third-color));	*/
+	/*background:linear-gradient(258deg, var(--first-color), var(--second-color), var(--third-color), var(--fourth-color),var(--fifth-color),var(--sixth-color),var(--seventh-color));*/
+	background-size: 400% 400%;
+	-webkit-animation: AnimationName 10s ease infinite;
+	-moz-animation: AnimationName 10s ease infinite;
+	animation: AnimationName 10s ease infinite;
+}
+
+.scenes{
+	width:500rem;
+	position: absolute;
+	top:0;
+	left:0;
+	background: linear-gradient(0, hsla(0,0,0) 0%, var(--first-color) 10%, var(--second-color) 20%, var(--third-color) 26%, var(--fourth-color) 30%, #fff 40%, #fff 60%, var(--fourth-color) 70%, var(--third-color) 74%, var(--second-color) 80%, var(--first-color) 10%, #000 100%);	
+
+	webkit-animation: AnimationName 50s ease infinite;
+	-moz-animation: AnimationName 50s ease infinite;
+	animation: AnimationName 50s ease infinite;	
+}
+.scene{
+	width:100rem;
+	height:100%;
+	float:left;
+}
+
+
+
+@keyframes color {
+  33.3% { color: #c1fb5d; }
+  66.7% { color: #fff; }
+}
+
+
+
+@-webkit-keyframes AnimationName {
+    0%{left:0;}
+    100%{left:500rem;}
+}
+@-moz-keyframes AnimationName {
+    0%{left:0;}
+    100%{left:500rem;}
+}
+@keyframes AnimationName { 
+    0%{left:0;}
+    100%{left:500rem;}
+}

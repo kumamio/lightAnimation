@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+<title>index_three</title> 
+<script type="text/javascript" src="jquery-1.6.4.js"></script>
+<link rel="stylesheet" type="text/css" href="light.css">
+<!-- <script src="utils.js"></script> -->
+</head>
+<body > 
+
+<div class="sky"></div>
+
+<div class="scenes">
+	<div class="scene scene-city"></div>
+	<div class="scene scene-hill"></div>
+	<div class="scene scene-land"></div>
+	<div class="scene scene-desert"></div>
+	<div class="scene scene-sea"></div> 	
+
+
+
+</div>
+
+<div class="sun"></div>
+
+<script type="text/javascript">
+
+
+	var $body = $("body");
+
+	var $scenes = $(".scenes");
+	var $sceneCity = $(".scene-city");
+	var $sceneHill = $(".scene-hill");
+	var $sceneLand = $(".scene-land");
+	var $sceneDesert = $(".scene-desert");
+	var $sceneSea = $(".scene-sea");
+
+
+
+
+	var clientW = window.innerWidth;
+	var clientH = window.innerHeight;
+	$body.css("font-size",clientW/100+"px");
+
+	$scenes.height(clientH);
+
+
+
+</script>
+
+
+</body>
+</html> 
+
+
