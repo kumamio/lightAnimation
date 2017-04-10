@@ -4,11 +4,10 @@
 <title>index_three</title> 
 <script type="text/javascript" src="jquery-1.6.4.js"></script>
 <link rel="stylesheet" type="text/css" href="light.css">
-<!-- <script src="utils.js"></script> -->
 </head>
 <body > 
 
-<div class="sky"></div>
+<!-- <div class="sky"></div> -->
 
 <div class="scenes">
 	<div class="scene scene-city"></div>
@@ -16,10 +15,10 @@
 	<div class="scene scene-land"></div>
 	<div class="scene scene-desert"></div>
 	<div class="scene scene-sea"></div> 
-
-
 </div>	
-<canvas id="canvas" ></canvas>
+
+<canvas id="front" ></canvas>
+<canvas id="back" ></canvas>
 
 <div class="sun"></div>
 
@@ -37,14 +36,15 @@
 
 	var clientW = window.innerWidth;
 	var clientH = window.innerHeight;
-	$body.css("font-size",clientW/100+"px");
+
+	$body.css({"font-size":clientW/100+"px","width":clientW+"px","height":clientH+"px"});
 
 	$scenes.height(clientH);
 
 
 	//绘制canvas背景，并填充渐变色
-	function draw() {
-	  var canvas = document.getElementById('canvas');
+	function drawFront() {
+	  var canvas = document.getElementById('front');
 	  canvas.width = clientW*5;
 	  canvas.height = clientH;
 
@@ -56,7 +56,7 @@
 	    var ctx = canvas.getContext('2d');
 	    ctx.beginPath();
 
-	    var origin = [4*ratioX,752*ratioY];
+	    var origin = [4*ratioX, 752*ratioY];
 
 	    ctx.moveTo (origin[0], origin[1]);
 
@@ -64,7 +64,7 @@
 
 
 	    function changePoint(arr){
-		    arr = arr.map(function(value,index){
+		    arr = arr.map(function(value, index){
 		    	return value + origin[(index % 2 == 0) ? 0 : 1];
 		    })
 	    	origin[0] = arr[4];
@@ -92,7 +92,7 @@
 
 	    grd.addColorStop(0, '#000'); 
 	    grd.addColorStop(.16, '#232a35'); 
-	    grd.addColorStop(.19, '#0241b5');
+	    grd.addColorStop(.19, '#232a35');
 	    grd.addColorStop(.22, '#006d5f');
 	    grd.addColorStop(.33, '#038b79');
 	    grd.addColorStop(.48, '#038b79');
@@ -100,6 +100,8 @@
 	    grd.addColorStop(.65, '#00bf48');
 	    grd.addColorStop(.74, '#984f00');
 	    ctx.fillStyle = grd;
+
+
 	    ctx.fill();
 
 	  }
@@ -110,9 +112,25 @@
 
 
 	};
-	draw();
+	drawFront();
 
+	function drawBack(){
+		var canvas = document.getElementById('back');
+		canvas.width = clientW*5;
+		canvas.height = clientH;
+		if (canvas.getContext) {
+			var ctx = canvas.getContext('2d');
+			ctx.rect(0,canvas.height*4/5,canvas.width,canvas.height/5);
+			ctx.fill();
 
+		}
+	}
+
+	drawBack();
+
+	console.log("frontWidth="+$('#front').width());
+
+	// var i = setInterval("console.log($('#front').css('left'))",1000);
 
 </script>
 
