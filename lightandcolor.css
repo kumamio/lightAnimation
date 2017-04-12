@@ -1,0 +1,66 @@
+*{
+	padding:0;
+	margin:0;
+}
+:root{	
+	--grass-color1:#f6ff00;
+	--grass-color2:#428601;
+}
+
+html{
+	color:#000;
+	position: relative;
+	/*animation: color 5s linear infinite;*/
+}
+body{
+	overflow: hidden;
+}
+body:after{
+	content: '';
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index: 1;
+  	background-color: currentColor;
+	background-image: linear-gradient(to bottom, currentColor, #fff);	
+}
+
+#cover{
+	position: absolute;
+	z-index: 2;
+}
+
+/*.scenes{
+	width:200%;
+	height: 100%;
+	float:left;
+}
+*/
+.scene{
+	width:100%;
+	height:100%;
+	float: left;
+}
+
+#scene_city{
+	position: absolute;
+	z-index: 3;
+}
+
+/*.shadow{
+	width:100%;
+	height:100%;
+	position: absolute;
+	top:0;
+	left:0;
+	background-color: rgba(0,0,0,.9);
+	z-index: 4
+}*/
+
+
+@keyframes color {
+  33.3% { color: #8fde42; }
+  66.7% { color: #c242de; }
+}

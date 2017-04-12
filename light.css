@@ -24,7 +24,7 @@ body{
 	position: relative;
 	overflow: hidden;
 	/*background: linear-gradient(0, var(--black-color) 0%, var(--first-color) 10%, var(--second-color) 16%, var(--third-color) 24%, var(--fourth-color) 30%, var(--fifth-color) 35%, var(--white-color) 40%, var(--white-color) 60%, var(--fifth-color) 65%, var(--fourth-color) 70%, var(--third-color) 76%, var(--second-color) 84%, var(--first-color) 90%, var(--black-color) 100%);	*/
-	background-size: 400% 400%;
+	/*background-size: 400% 400%;*/
 
 }
 

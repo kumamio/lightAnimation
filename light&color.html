@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+<title>index_three</title> 
+<script type="text/javascript" src="jquery-1.6.4.js"></script>
+<link rel="stylesheet" type="text/css" href="lightandcolor.css">
+<script type="text/javascript" src="utils.js"></script>
+</head>
+<body > 
+<!-- <canvas id="cover"></canvas> -->
+<div class="scenes clearfix">
+	<div class="scene scene_city">
+		<canvas id="scene_city"></canvas>
+		<!-- <div class="shadow"></div> -->
+	</div>
+<!-- 	<div class="scene scene_country">
+		<canvas id="scene_country"></canvas>
+	</div> -->
+
+</div>
+
+<script type="text/javascript">
+
+	var clientW = window.innerWidth;
+	var clientH = window.innerHeight;
+	// var ratioX =  clientW/2000;
+	// var ratioY = clientH/1000;
+
+	// var cover=document.getElementById("cover");
+
+	$("body").css({"font-size":clientW/100+"px","width":clientW+"px","height":clientH+"px"});
+
+	// if (cover) {
+
+	// 	cover.width = clientW;
+	// 	cover.height = clientH;
+
+	// 	var ctx = cover.getContext("2d");
+	// 	ctx.moveTo(clientW/2,clientH/2);
+	// 	ctx.beginPath();
+	// 	ctx.fillStyle = '#444';
+	// 	ctx.fillRect(0,0,clientW,clientW);
+	// 	ctx.textAlign="center";
+
+	// 	ctx.font=clientW/4+"px Impact";
+	// 	ctx.textBaseline="middle";
+	// 	ctx.globalCompositeOperation = 'destination-out';
+	// 	ctx.shadowColor = "rgba(0,0,0,.5)";
+	// 	ctx.fillText("color",clientW/2,clientH/2);
+	// 	ctx.fillStyle = '#000';
+	// 	ctx.globalCompositeOperation = 'luminosity';
+
+	// 	cover.addEventListener('mousedown',function(event){
+	// 		var x = event.pageX;
+	// 		var y = event.pageY;
+	// 		var radius = 0;
+	// 		//amazing
+	// 		(function drawCircle() {
+	// 			radius = (radius+1)*1.15;
+	// 			ctx.arc(event.pageX, event.pageY, radius, 0, 2 * Math.PI);
+	// 			ctx.fill();
+	// 			if (radius<=clientW) {
+	// 				setTimeout(function(){
+	// 					requestAnimationFrame(drawCircle);
+	// 				},10)
+	// 			}else{
+	// 				playSceneCity();
+	// 			}
+	// 		})();
+
+	// 	},false)
+
+	// };
+
+	var light = 0;
+
+
+
+	(function playSceneCity(){
+		var city=document.getElementById("scene_city");
+		city.width = clientW;
+		city.height = clientH;
+		var ctx = city.getContext("2d");
+
+
+		(function drawScene() {
+			light++;
+			if (light<=100) {
+				debugger;
+				var grassColor_rgb = utils.rgbToHsl(66,134,1);
+				var grassColor1 = "hsl("+grassColor_rgb[0]+","+grassColor_rgb[1]+"%,"+parseInt(light*grassColor_rgb[2])+"% )";
+				var grassColor1 = "hsl("+grassColor_rgb[0]+","+grassColor_rgb[1]+"%,"+parseInt(light*grassColor_rgb[2])+"% )";
+				// var grassColor2 = "hsl(91,98%,"+parseInt(light*0.27)+"% )";
+				var grd = ctx.createLinearGradient(0,clientH,clientW, clientH);
+				grd.addColorStop(0,   grassColor1);
+				grd.addColorStop(0.2, grassColor1);
+				grd.addColorStop(0.2, grassColor2);
+				grd.addColorStop(0.4, grassColor2);
+				grd.addColorStop(0.4, grassColor1);
+				grd.addColorStop(0.6, grassColor1);
+				grd.addColorStop(0.6, grassColor2);
+				grd.addColorStop(0.8, grassColor2);
+				grd.addColorStop(0.8, grassColor1);
+				grd.addColorStop(1,   grassColor1);
+				ctx.fillStyle = grd;
+				ctx.fillRect(0,0.8*clientH,clientW,clientH);
+
+				setTimeout(function(){
+					requestAnimationFrame(drawScene);
+				},100)
+			}
+		})();
+
+
+
+	})()
+
+
+
+
+
+</script>
+
+
+</body>
+</html> 
+
+
