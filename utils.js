@@ -149,6 +149,8 @@ window.utils.intersects = function (rectA, rectB) {
 
 
 window.utils.rgbToHsl = function (r, g, b){
+  
+    debugger;
     r /= 255, g /= 255, b /= 255;
     var max = Math.max(r, g, b), min = Math.min(r, g, b);
     var h, s, l = (max + min) / 2;
@@ -165,10 +167,7 @@ window.utils.rgbToHsl = function (r, g, b){
         }
         h /= 6;
     }
-
-    return [parseInt(h*100), parseInt(s*100), l.toFixed(2)];
-
-    return "hsl("+h*100+","+s*100+"%,"+parseInt(light*grassColor_rgb[2])+"% )"
+    return [parseInt(h*100), parseInt(s*100), l.toFixed(2) ];
 
 
 }

@@ -10,7 +10,7 @@
 html{
 	color:#000;
 	position: relative;
-	/*animation: color 5s linear infinite;*/
+	animation: color 10s linear infinite;
 }
 body{
 	overflow: hidden;
@@ -24,7 +24,7 @@ body:after{
 	height:100%;
 	z-index: 1;
   	background-color: currentColor;
-	background-image: linear-gradient(to bottom, currentColor, #fff);	
+	background-image: linear-gradient(90deg, currentColor, #fff);	
 }
 
 #cover{
@@ -49,7 +49,7 @@ body:after{
 	z-index: 3;
 }
 
-/*.shadow{
+.shadow{
 	width:100%;
 	height:100%;
 	position: absolute;
@@ -57,7 +57,7 @@ body:after{
 	left:0;
 	background-color: rgba(0,0,0,.9);
 	z-index: 4
-}*/
+}
 
 
 @keyframes color {
