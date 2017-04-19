@@ -46,9 +46,9 @@ canvas#front{
 	top:0;
 	left:0;
 	z-index: 100;
-	webkit-animation: moveHorizon 50s linear infinite;
+/*	webkit-animation: moveHorizon 50s linear infinite;
 	-moz-animation: moveHorizon 50s linear infinite;
-	animation: moveHorizon 50s linear infinite;	
+	animation: moveHorizon 50s linear infinite;	*/
 }
 canvas#back{
 	position: absolute;

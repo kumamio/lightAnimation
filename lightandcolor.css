@@ -44,9 +44,15 @@ body:after{
 	float: left;
 }
 
+
+#sky{
+	position: absolute;
+	z-index:3;
+}
+
 #scene_city{
 	position: absolute;
-	z-index: 3;
+	z-index: 4;
 }
 
 .shadow{
