@@ -41,7 +41,7 @@
 		ctx.moveTo(clientW/2,clientH/2);
 		ctx.beginPath();
 		ctx.fillStyle = '#444';
-		ctx.fillRect(0,0,clientW,clientW);
+		ctx.fillRect(0,0,clientW,clientH);
 		ctx.textAlign="center";
 
 		ctx.font=clientW/4+"px Impact";
@@ -52,16 +52,18 @@
 		ctx.fillStyle = '#000';
 		ctx.globalCompositeOperation = 'source-over';//amazing!
 
-
-
-
 		var ctx_sky = sky.getContext("2d");
+		sky.width = clientW;
+		sky.height = clientH;
+
+		var skyColor = [242,83,0];
 
 		function playSceneCity(){
 			var city=document.getElementById("scene_city");
 			city.width = clientW;
 			city.height = clientH;
 			var ctx = city.getContext("2d");
+			var skyctx = sky.getContext("2d");
 
 			//把原先的点转化成可以生成贝塞尔曲线的点
 		    var changePoint = function (arr,i,origin){
@@ -83,7 +85,7 @@
 
 		    //画曲线
 		    var pointToCurve = function(pointlist,ctx,origin) {
-		 	    Array.prototype.map.call(pointlist,function(value,index){
+		 	    Array.prototype.map.call(pointlist, function(value,index){
 			    	var innerArr = value.map(function(v,i){
 			    		if ( i<=5 ) {
 			    			return (i % 2 == 0) ? parseInt(v*ratioX) : parseInt(v*ratioY);
@@ -98,6 +100,8 @@
 			    })
 		    }
 
+		    var skyColor = [240,84,0];
+
 			function drawScene() {
 				light=light +1;
 				
@@ -108,9 +112,19 @@
 				
 				if (light<=100) {
 
-
-					var drawBG = function(h,s,l){
-
+					function drawBG(color,light){
+						var h = color[0];
+						var s = color[1];
+						var l = light;
+						var newColor = [h+1,s-1,l+1]
+						console.log(color + ":"+newColor);
+						var grd = skyctx.createLinearGradient(0,0,0, clientH);
+						grd.addColorStop(0,   newHsl(color));
+						grd.addColorStop(0.8,   newHsl(newColor));
+						grd.addColorStop(1,   "#fff");
+						skyctx.fillStyle = grd;
+						skyctx.fillRect(0,0,clientW,clientH);
+						skyColor = newColor;
 					}
 					
 					//画矩形
@@ -181,6 +195,33 @@
 
 					}
 
+
+
+
+					var drawMountain = function(origin,pointlist,color){
+						ctx.beginPath();
+						ctx.moveTo( origin[0]*ratioX, origin[1]*ratioY);
+						pointToCurve ( pointlist, ctx, origin );
+						ctx.fillStyle = newHsl(color);
+						ctx.fill();
+						ctx.closePath();
+					}
+
+					var mountainPointList = [[-208, -0.136, -417, -0.27, -625, -0.41],[129, -49, 176, -254, 199, -373],[8, -43, 28, -114, 8.6, -157],[-15, -32, 87, -27, 108, -27],[151, -1.7, 105, 25, 113, 150],[8.8, 142, 48, 347, 198, 406]];
+
+					var mountain2PointList = [[261, -414, 314, -284, 499, -5],[1650, 1010, 950, 949, 1027, 828, "C"]];
+
+					var cloud1PointList = [ [-40, -23, -86, -24, -114, 17], [-6, 8.6, -16, 0.1, -26, -0.1], [-20, -0.3, -27, 15.5, -26, 33], [-24, -14, -62, 8.6, -82, 20], [58, 1.5, 117, 2, 175, 2.4], [90, 0.3, 181, 1.8, 270, -8.4], [-46, -5, -85, -23, -122, -51], [1731, 109, 1710, 98, 1681, 114, "C"] ];
+
+
+
+					drawMountain([1998, 810], mountainPointList,[326,28,40]);//画山
+					drawMountain([1027, 828], mountain2PointList,[65,70,50]);
+
+
+					drawMountain([1681,114], cloud1PointList,[227,15,55]);
+
+
 					drawRect(1152,740,10,97,14,22,60);//画树杆
 					drawRect(1305,762,10,97,14,18,56);
 					drawTree(ctx, 1101*ratioX, 568*ratioY, 124*ratioX, 198*ratioY);//画树枝
@@ -225,8 +266,8 @@
 				}else{
 					//触发第二幅动画
 					playSceneCity();
-					ctx.globalCompositeOperation = 'destination-out';
-					ctx.fillRect(0,0,clientW,clientH);
+					// ctx.globalCompositeOperation = 'destination-out';
+					// ctx.fillRect(0,0,clientW,clientH);
 				}
 			})(ctx);
 

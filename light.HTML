@@ -65,67 +65,67 @@
 	    // var result;
 
 
-	    // var changePoint = function (arr,i){
-	    // 	debugger;
-	    // 	if (arr.length==6) {
-			  //   arr = arr.map(function(value, index){
-			  //   	debugger;
-			  //   	return value + origin[(index % 2 == 0) ? 0 : 1];
-			  //   })
-	    // 	}else{
-	    // 		if(arr[6]=="C"){
-				 //    arr.length = 6;
-	    // 		}
-	    // 		if (arr[6]=="S") {
-	    // 			var prevArr = newPointList[i-1];
-				 //    arr = arr.map(function(value, index){
-				 //    	if (index == 2|3|4|5) {
-				 //    		return value + origin[(index % 2 == 0) ? 0 : 1];
-				 //    	}
-				 //    	if (index == 6) {
-				 //    		return v;
-				 //    	};
-				 //    })
-				 //    arr[0] = 2*prevArr[4]-prevArr[2];
-				 //    arr[1] = 2*prevArr[5]-prevArr[3]
-				 //    arr.length = 6;
-	    // 		};
-	    // 	}
-	    // 	origin[0] = arr[4];
-	    // 	origin[1] = arr[5];
-	    // 	return arr;
-	    // }
+	    var changePoint = function (arr,i){
+	    	debugger;
+	    	if (arr.length==6) {
+			    arr = arr.map(function(value, index){
+			    	debugger;
+			    	return value + origin[(index % 2 == 0) ? 0 : 1];
+			    })
+	    	}else{
+	    		if(arr[6]=="C"){
+				    arr.length = 6;
+	    		}
+	    		if (arr[6]=="S") {
+	    			var prevArr = newPointList[i-1];
+				    arr = arr.map(function(value, index){
+				    	if (index == 2|3|4|5) {
+				    		return value + origin[(index % 2 == 0) ? 0 : 1];
+				    	}
+				    	if (index == 6) {
+				    		return v;
+				    	};
+				    })
+				    arr[0] = 2*prevArr[4]-prevArr[2];
+				    arr[1] = 2*prevArr[5]-prevArr[3]
+				    arr.length = 6;
+	    		};
+	    	}
+	    	origin[0] = arr[4];
+	    	origin[1] = arr[5];
+	    	return arr;
+	    }
 
-	    // var pointList = [[237, 2, 474, 4, 711, 6],[86, 1, 261, 38, 328, -25],[76, -71, 135, -162, 189, -249],[105, -175, 117, 286, 174, 267],[63, -21, 81, -226, 91, -281],[6, -33, 25, -234, 65, -241],[24, -5, 83, 402, 103, 441],[52, 102, 293, 135, 393, 135],[189, -2, 378, -3, 566, -4],[149, -1, 380, 41, 510, -51],[52, -37, 64, -110, 124, -137],[37, -17, 75, -10, 109, 9],[41, 23, 63, -4, 101, -22],[146, -68, 193, 161, 329, 154],[61, -3, 83, -61, 136, -77],[73, -22, 154, 53, 204, 95],[102, 85, 304, 229, 443, 229],[-1526, 0, -3052, 0, -4578, 0],[1,917,3,835,4,752,"C"]];
+	    var pointList = [[237, 2, 474, 4, 711, 6],[86, 1, 261, 38, 328, -25],[76, -71, 135, -162, 189, -249],[105, -175, 117, 286, 174, 267],[63, -21, 81, -226, 91, -281],[6, -33, 25, -234, 65, -241],[24, -5, 83, 402, 103, 441],[52, 102, 293, 135, 393, 135],[189, -2, 378, -3, 566, -4],[149, -1, 380, 41, 510, -51],[52, -37, 64, -110, 124, -137],[37, -17, 75, -10, 109, 9],[41, 23, 63, -4, 101, -22],[146, -68, 193, 161, 329, 154],[61, -3, 83, -61, 136, -77],[73, -22, 154, 53, 204, 95],[102, 85, 304, 229, 443, 229],[-1526, 0, -3052, 0, -4578, 0],[1,917,3,835,4,752,"C"]];
 
-		// [35, 46.5, 50, 134.5, 205, 134.5]
+		[35, 46.5, 50, 134.5, 205, 134.5]
 
-		var pointList = [[-82, 2.7, -74, 197, 7, 196],[,,1051, 371, 969, 376,"S"]]
+		// var pointList = [[-82, 2.7, -74, 197, 7, 196],[,,1051, 371, 969, 376,"S"]]
 
 
 	    // var newPointList=[];
 
 
-	    // var pointToCurve = function(pointlist,ctx) {
-	 	  //   pointlist.map(function(value,index){
-		   //  	var innerArr = value.map(function(v,i){
-	 	  //   		debugger;
-		   //  		if ( i<=5 ) {
-		   //  			return (i % 2 == 0) ? parseInt(v*ratioX) : parseInt(v*ratioY);
-		   //  		}else{
-		   //  			return v;
-		   //  		}
-		   //  	})
-		   //  	// newPointList[index] = innerArr;
-		   //  	var arr = changePoint(innerArr,index);
-		   //  	newPointList[index] = arr;
-	    // 		ctx.bezierCurveTo(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
-		   //  	return arr;
-		   //  })
-	    // }
+	    var pointToCurve = function(pointlist,ctx) {
+	 	    pointlist.map(function(value,index){
+		    	var innerArr = value.map(function(v,i){
+	 	    		debugger;
+		    		if ( i<=5 ) {
+		    			return (i % 2 == 0) ? parseInt(v*ratioX) : parseInt(v*ratioY);
+		    		}else{
+		    			return v;
+		    		}
+		    	})
+		    	// newPointList[index] = innerArr;
+		    	var arr = changePoint(innerArr,index);
+		    	newPointList[index] = arr;
+	    		ctx.bezierCurveTo(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
+		    	return arr;
+		    })
+	    }
 
 
-	    // pointToCurve(pointList,ctx);
+	    pointToCurve(pointList,ctx);
 
 
 

@@ -46,6 +46,7 @@ body:after{
 
 
 #sky{
+	display: none;
 	position: absolute;
 	z-index:3;
 }
