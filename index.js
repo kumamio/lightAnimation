@@ -142,7 +142,7 @@
       ];
       drawBezier([1884.5,912.5], mountainList,[326,28,40],ctxCurves);
       drawBezier([1058.141,1011.01], hillPoint,[65,70,50],ctxCurves);
-      drawBezier([865.868,159.72], cloud1List,[225,14,55],ctxCurves);
+      drawBezier([865.868,159.72], cloud1List,[227,14,55],ctxCurves);
     }
 
     //画天空背景
@@ -153,8 +153,9 @@
     }
     
     //画太阳
-    function drawSun(){
+    function drawSun(h,s,l){
       sun.style.display= "block";
+      sun.style.backgroundColor = "hsl("+h*light/100+", "+s+"%, "+ l+ "%)"
       sun.style.top=clientH*0.8*(1.1-light/100)+"px";
       sun.style.left=clientW*0.5*light/100+"px";
     }
@@ -257,7 +258,7 @@
                 light=light +1;
 
                 if (light<=100) {
-                  drawSun();
+                  drawSun(47,83,50);
                   drawBG(225,97,77);
                   drawCurvesCanvas();//画曲线物体
                   drawRect(1152,740,10,97,14,22,60);//画树杆
