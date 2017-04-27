@@ -25,6 +25,11 @@
     sky.height = clientH;
     var skyctx = sky.getContext("2d");
 
+    var sun=document.getElementById("sun");
+    sun.style.width=clientW/10+"px";
+    sun.style.height=clientW/10+"px";
+    sun.style.top=clientH+"px";
+
     var radius = 0;
 
     document.getElementById("body").width=clientW;
@@ -73,12 +78,12 @@
       return arr;
     }
 
-    //画曲线
+    //点到bezier曲线
     var pointToCurve = function(pointlist,ctx,origin) {
       Array.prototype.map.call(pointlist, function(value,index){
         var innerArr = value.map(function(v,i){
           if ( i<=5 ) {
-            return (i % 2 == 0) ? v*ratioCurvesX : v*ratioCurvesY;
+            return (i % 2 == 0) ? v*ratioX : v*ratioY;
           }else{
             return v;
           }
@@ -90,10 +95,10 @@
       })
     }
 
-    //画山
+    //画曲线并着色
     var drawBezier = function(origin,pointlist,color,ctx){
       ctx.beginPath();
-      origin=[origin[0]*ratioCurvesX,origin[1]*ratioCurvesY];
+      origin=[origin[0]*ratioX,origin[1]*ratioY];
       ctx.moveTo( origin[0], origin[1]);
       pointToCurve ( pointlist, ctx, origin );
       ctx.fillStyle = newHsl(color);
@@ -104,16 +109,8 @@
     //在canvas上画曲线 
     var drawCurvesCanvas = function (){
 
-      if (parseInt(clientW/clientH)>=2) {
-        curves.width = clientH*2;
-        curves.height = clientH;
-      }else{
-        curves.width = clientW;
-        curves.height = clientW/2;
-      }
-
-      ratioCurvesX = curves.width/2000;
-      ratioCurvesY = curves.height/1000;
+      curves.width = clientW;
+      curves.height = clientH;
 
       var cloud1List = [
         [-10.664,-28.993,80.456,-33.713,85.301,-12.137],
@@ -150,19 +147,19 @@
 
     //画天空背景
     function drawBG(h,s,l){
-      // var h = color[0];
-      // var s = color[1];
-      // var l = light;
-      // var newColor = [h+1,s-1,l+1];
-      // console.log(color + ":"+newColor);
-      // var grd = skyctx.createLinearGradient(0,0,0, clientH);
-      // grd.addColorStop(0,   newHsl(color));
-      // grd.addColorStop(0.8,   newHsl(newColor));
-      // grd.addColorStop(1,   "#fff");
+      sky.style.display = "block";
       skyctx.fillStyle = "hsl("+h+", "+s+"%, "+ l*light/100+ "%)";
       skyctx.fillRect(0,0,clientW,clientH);
     }
     
+    //画太阳
+    function drawSun(){
+      sun.style.display= "block";
+      sun.style.top=clientH*0.8*(1.1-light/100)+"px";
+      sun.style.left=clientW*0.5*light/100+"px";
+    }
+
+
     //画矩形
     var drawRect = function(x,y,h,s,l,width,height){
       ctx.fillStyle = "hsl("+h+", "+s+"%, "+ l*light/100+ "%)";
@@ -232,32 +229,6 @@
 
     }
 
-    var playScene = function () {
-      $(city).show();
-
-      function drawScene() {
-        light=light +1;
-
-        if (light<=100) {
-          drawCurvesCanvas();
-          drawRect(1152,740,10,97,14,22,60);//画树杆
-          drawRect(1305,762,10,97,14,18,56);
-          drawTree(ctx, 1101*ratioX, 568*ratioY, 124*ratioX, 198*ratioY);//画树枝
-          drawTree(ctx, 1268*ratioX, 628*ratioY, 94*ratioX, 149*ratioY);
-          drawRect(366,313,0,0,35,237,490);//画两栋建筑
-          drawRect(705,414,0,0,35,186,386);
-          drawWindows(418,365,44,70);//建筑上的窗户
-          drawWindows(749,453,33,54);
-          drawGrass();
-
-          setTimeout(function(){
-            requestAnimationFrame(drawScene);
-          },50)
-        }
-      }
-
-    }
-
     var init = function (){
       // debugger;
       drawCover();
@@ -286,7 +257,8 @@
                 light=light +1;
 
                 if (light<=100) {
-                  drawBG();
+                  drawSun();
+                  drawBG(225,97,77);
                   drawCurvesCanvas();//画曲线物体
                   drawRect(1152,740,10,97,14,22,60);//画树杆
                   drawRect(1305,762,10,97,14,18,56);
