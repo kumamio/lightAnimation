@@ -26,8 +26,8 @@
     var skyctx = sky.getContext("2d");
 
     var sun=document.getElementById("sun");
-    sun.style.width=clientW/10+"px";
-    sun.style.height=clientW/10+"px";
+    sun.style.width=clientW/12+"px";
+    sun.style.height=clientW/12+"px";
     sun.style.top=clientH+"px";
 
     var radius = 0;
@@ -258,7 +258,7 @@
                 light=light +1;
 
                 if (light<=100) {
-                  drawSun(47,83,50);
+                  drawSun(47,83,60);
                   drawBG(225,97,77);
                   drawCurvesCanvas();//画曲线物体
                   drawRect(1152,740,10,97,14,22,60);//画树杆
