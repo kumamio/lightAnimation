@@ -8,11 +8,15 @@
 }
 
 html{
+	width:100%;
+	height: 100%;
 	color:#000;
 	position: relative;
 	animation: color 10s linear infinite;
 }
 body{
+	width:100%;
+	height: 100%;
 	overflow: hidden;
 }
 body:after{
@@ -33,11 +37,11 @@ body:after{
 }
 
 
-.scene{
+/*.scene{
 	width:100%;
 	height:100%;
 	float: left;
-}
+}*/
 
 
 #curves{

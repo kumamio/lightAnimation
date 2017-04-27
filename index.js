@@ -1,4 +1,4 @@
-$(function(){
+(function () {
 
     var clientW = window.innerWidth;
     var clientH = window.innerHeight;
@@ -27,9 +27,9 @@ $(function(){
 
     var radius = 0;
 
-    // debugger;
+    document.getElementById("body").width=clientW;
+    document.getElementById("body").height=clientH;
 
-    $("body").css({"font-size":clientW/100+"px","width":clientW+"px","height":clientH+"px"});
 
     var drawCover = function(){
 
@@ -149,19 +149,18 @@ $(function(){
     }
 
     //画天空背景
-    function drawBG(color,light){
-      var h = color[0];
-      var s = color[1];
-      var l = light;
-      var newColor = [h+1,s-1,l+1]
-      console.log(color + ":"+newColor);
-      var grd = skyctx.createLinearGradient(0,0,0, clientH);
-      grd.addColorStop(0,   newHsl(color));
-      grd.addColorStop(0.8,   newHsl(newColor));
-      grd.addColorStop(1,   "#fff");
-      skyctx.fillStyle = grd;
+    function drawBG(h,s,l){
+      // var h = color[0];
+      // var s = color[1];
+      // var l = light;
+      // var newColor = [h+1,s-1,l+1];
+      // console.log(color + ":"+newColor);
+      // var grd = skyctx.createLinearGradient(0,0,0, clientH);
+      // grd.addColorStop(0,   newHsl(color));
+      // grd.addColorStop(0.8,   newHsl(newColor));
+      // grd.addColorStop(1,   "#fff");
+      skyctx.fillStyle = "hsl("+h+", "+s+"%, "+ l*light/100+ "%)";
       skyctx.fillRect(0,0,clientW,clientH);
-      skyColor = newColor;
     }
     
     //画矩形
@@ -284,10 +283,10 @@ $(function(){
               //触发第二幅动画
               (function drawScene() {
                 document.getElementById("scene_city").style.display="block";
-                console.log(light);
                 light=light +1;
 
                 if (light<=100) {
+                  drawBG();
                   drawCurvesCanvas();//画曲线物体
                   drawRect(1152,740,10,97,14,22,60);//画树杆
                   drawRect(1305,762,10,97,14,18,56);
@@ -297,7 +296,7 @@ $(function(){
                   drawRect(705,414,0,0,35,186,386);
                   drawWindows(418,365,44,70);//建筑上的窗户
                   drawWindows(749,453,33,54);
-                  drawGrass();
+                  drawGrass(226,92,80);
 
                   setTimeout(function(){
                     requestAnimationFrame(drawScene);
@@ -315,4 +314,4 @@ $(function(){
 
     init();
 
-})
+})()
