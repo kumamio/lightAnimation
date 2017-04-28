@@ -1,68 +1,68 @@
-*{
-	padding:0;
-	margin:0;
+* {
+	padding: 0;
+	margin: 0;
 }
-:root{	
-	--sun-color:hsla(60,100%,87%,.55);
+:root {	
+	--sun-color: hsla(60, 100%, 87%, .55);
 }
 
-html{
-	width:100%;
+html {
+	width: 100%;
 	height: 100%;
-	color:#000;
+	color: #000;
 	position: relative;
 	animation: color 10s linear infinite;
 }
-body{
-	width:100%;
+body {
+	width: 100%;
 	height: 100%;
 	overflow: hidden;
 }
-body:after{
+body:after {
 	content: '';
 	position: absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	z-index: 1;
   	background-color: currentColor;
 	background-image: linear-gradient(90deg, currentColor, #fff);	
 }
 
-#cover{
+#cover {
 	position: absolute;
 	z-index: 2;
 }
 
 
-#curves{
+#curves {
 	position: absolute;
-	left:0;
+	left: 0;
 	bottom:0;
 	z-index: 5;
 }
 
 
-#sky{
+#sky {
 	display: none;
 	position: absolute;
-	z-index:3;
+	z-index: 3;
 	display: none;
 }
 
-#scene_city{
+#scene_city {
 	display: none;
 	position: absolute;
 	z-index: 6;
 }
 
-#sun{
+#sun {
 	display: none;
 	border-radius: 1000px;
 	background-color: #f00;
 	position: absolute;
-	left:50%;
+	left: 50%;
 	z-index: 4;
 	box-shadow: 0 0 120px var(--sun-color);
 }
