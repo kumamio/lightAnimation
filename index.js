@@ -142,7 +142,7 @@
       ];
       drawBezier([1884.5,912.5], mountainList,[326,28,40],ctxCurves);
       drawBezier([1058.141,1011.01], hillPoint,[65,70,50],ctxCurves);
-      drawBezier([865.868,159.72], cloud1List,[227,14,55],ctxCurves);
+      drawBezier([865.868,159.72], cloud1List,[256,100,100],ctxCurves);
     }
 
     //画天空背景

@@ -3,8 +3,7 @@
 	margin:0;
 }
 :root{	
-	--grass-color1:#f6ff00;
-	--grass-color2:#428601;
+	--sun-color:hsla(60,100%,87%,.55);
 }
 
 html{
@@ -65,7 +64,7 @@ body:after{
 	position: absolute;
 	left:50%;
 	z-index: 4;
-	box-shadow: 0 0 120px hsla(60,100%,87%,.55);
+	box-shadow: 0 0 120px var(--sun-color);
 }
 
 @keyframes color {
